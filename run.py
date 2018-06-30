@@ -67,5 +67,17 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 #
 # The training process will run for a fixed number of iterations through the dataset called "epochs",
 #  that we must specify using the nepochs argument.
+#
+# We can also set the number of instances that are evaluated before a weight update in the network is performed
+#   called the batch_size.
+#
+# Selecting the epochs and batch_size can be chosen experimentally by trial and error. 150 epochs and a batch size
+#   of 10 is what is being used in this example (which are considered relatively small).
 
-# Fit Model
+# Fit the model
+model.fit(X, Y, epochs=150, batch_size=10)
+
+# evaluate the model
+scores = model.evaluate(X, Y)
+print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+
